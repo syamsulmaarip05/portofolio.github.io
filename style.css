@@ -233,7 +233,7 @@ section{ padding:50px 0; }
 }
 .skill-badge i{ color:var(--accent); font-size:18px; }
 
-/* ---------- TIMELINE (Education, Experience & Publications) ---------- */
+/* ---------- TIMELINE (Education & Experience) ---------- */
 .timeline{
   position:relative;
   padding-left:36px;
@@ -354,7 +354,7 @@ section{ padding:50px 0; }
   transition:transform .3s ease;
 }
 
-/* ---------- PROJECTS CAROUSEL ---------- */
+/* ---------- CAROUSEL CONTROLS (dipakai Projects & Certifications) ---------- */
 .carousel-controls{
   display:flex;
   gap:12px;
@@ -384,6 +384,7 @@ section{ padding:50px 0; }
   cursor:not-allowed;
 }
 
+/* ---------- PROJECTS CAROUSEL ---------- */
 .projects-track{
   display:grid;
   grid-auto-flow:column;
@@ -419,11 +420,11 @@ section{ padding:50px 0; }
   aspect-ratio:16/10;
   background:linear-gradient(160deg, var(--accent) 0%, var(--bg-soft) 70%);
   flex-shrink:0;
+  overflow:hidden;
 }
 .project-thumb img{
   width:100%;
   height:100%;
-  max-height: 200px;
   object-fit:cover;
 }
 .project-thumb .photo-placeholder{ font-size:48px; }
@@ -474,7 +475,6 @@ section{ padding:50px 0; }
   align-items:center;
   gap:6px;
 
-  /* Tambahan */
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 8px 14px;
@@ -486,14 +486,25 @@ section{ padding:50px 0; }
 }
 .btn-link:hover{ color:var(--accent-dark); gap:10px; }
 
-/* ---------- CERTIFICATIONS ---------- */
-.cert-grid{
+/* ---------- CERTIFICATIONS CAROUSEL (sama gayanya dengan Projects) ---------- */
+.cert-track{
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
+  grid-auto-flow:column;
+  grid-auto-columns:calc((100% - 3 * 26px) / 4);
   gap:26px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding:10px 2px 14px;
   margin-top:20px;
+
+  -ms-overflow-style:none;
+  scrollbar-width:none;
 }
+.cert-track::-webkit-scrollbar{ display:none; }
+
 .cert-card{
+  scroll-snap-align:start;
   background:var(--bg-card);
   border:1px solid var(--border);
   border-radius:var(--radius);
@@ -663,34 +674,53 @@ section{ padding:50px 0; }
   font-size:14px;
 }
 
+.socials{
+    display:flex;
+    gap:18px;
+    margin-top:24px;
+}
+
+.socials a{
+    width:42px;
+    height:42px;
+    border:1px solid var(--border);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--text);
+    background:#fff;
+    transition:.25s;
+}
+
+.socials a:hover{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+}
+
 /* ---------- FOOTER ---------- */
 footer{
   padding:40px 0 60px;
   border-top:1px solid var(--border);
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content: center;
+  height: 50px;
 }
+
 footer p{ color:var(--text-muted); font-size:14px; }
 .socials{ display:flex; gap:18px; }
-.socials a{
-  width:38px;
-  height:38px;
-  border:1px solid var(--border);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--text);
-  transition:background .2s ease, border-color .2s ease, color .2s ease;
-}
-.socials a:hover{ background:var(--accent); border-color:var(--accent); color:#fff; }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1100px){
   .projects-track{
     grid-auto-columns:calc((100% - 2 * 24px) / 3);
     gap:24px;
+  }
+  .cert-track{
+    grid-auto-columns:calc((100% - 2 * 22px) / 3);
+    gap:22px;
   }
 }
 
@@ -702,7 +732,6 @@ footer p{ color:var(--text-muted); font-size:14px; }
   .about{ grid-template-columns:1fr; }
   .about .photo-box{ max-width:340px; margin:0 auto; }
   .cta{ flex-direction:column; text-align:center; padding:50px 30px; }
-  .cert-grid{ grid-template-columns:repeat(2, 1fr); }
   .gallery-grid{ grid-template-columns:repeat(2, 1fr); }
 
   .nav-links{
@@ -729,16 +758,22 @@ footer p{ color:var(--text-muted); font-size:14px; }
     grid-auto-columns:calc((100% - 20px) / 2);
     gap:20px;
   }
+  .cert-track{
+    grid-auto-columns:calc((100% - 20px) / 2);
+    gap:20px;
+  }
 }
 
 @media (max-width: 640px){
   .container{ padding:0 22px; }
   .hero-text h1{ font-size:38px; }
-  .cert-grid{ grid-template-columns:1fr; }
   .gallery-grid{ grid-template-columns:1fr 1fr; }
   .timeline{ padding-left:28px; }
   .timeline-dot{ left:-37px; }
   .projects-track{
+    grid-auto-columns:85%;
+  }
+  .cert-track{
     grid-auto-columns:85%;
   }
   footer{ flex-direction:column; gap:16px; text-align:center; }

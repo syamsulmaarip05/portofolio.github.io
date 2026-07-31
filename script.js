@@ -16,7 +16,7 @@ if (navToggle && navLinks) {
 
 // ================= Experience: Expandable Timeline =================
 const timeline = document.getElementById("experienceTimeline");
-const toggleBtn = document.getElementById("toggleExperience"); // id ini harus sama dengan di HTML
+const toggleBtn = document.getElementById("toggleExperience");
 
 if (timeline && toggleBtn) {
   toggleBtn.addEventListener("click", () => {
@@ -25,14 +25,10 @@ if (timeline && toggleBtn) {
     if (timeline.classList.contains("expanded")) {
       toggleBtn.innerHTML =
         "Tampilkan Lebih Sedikit <i class='fa-solid fa-chevron-up'></i>";
-
-      // Scroll halus ke atas section experience biar tidak "hilang" posisi
       toggleBtn.scrollIntoView({ behavior: "smooth", block: "nearest" });
     } else {
       toggleBtn.innerHTML =
         "Lihat Semua Pengalaman <i class='fa-solid fa-chevron-down'></i>";
-
-      // Saat ditutup, scroll ke awal section experience
       document
         .getElementById("experience")
         .scrollIntoView({ behavior: "smooth", block: "start" });
@@ -40,45 +36,126 @@ if (timeline && toggleBtn) {
   });
 }
 
+// ================= Helper umum: buat carousel geser (dipakai Projects & Certifications) =================
+function initCarousel({
+  trackId,
+  prevId,
+  nextId,
+  cardSelector,
+  autoScroll = false,
+  intervalMs = 3200,
+}) {
+  const track = document.getElementById(trackId);
+  const prevBtn = document.getElementById(prevId);
+  const nextBtn = document.getElementById(nextId);
+
+  if (!track) return;
+
+  let autoTimer = null;
+  let resumeTimer = null;
+
+  function getStep() {
+    const card = track.querySelector(cardSelector);
+    if (!card) return 0;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap) || 0;
+    return card.getBoundingClientRect().width + gap;
+  }
+
+  function updateButtons() {
+    if (!prevBtn || !nextBtn) return;
+    const maxScroll = track.scrollWidth - track.clientWidth - 1;
+    prevBtn.disabled = track.scrollLeft <= 0;
+    nextBtn.disabled = track.scrollLeft >= maxScroll;
+  }
+
+  function scrollByDirection(direction) {
+    const step = getStep();
+    if (!step) return;
+    const maxScroll = track.scrollWidth - track.clientWidth - 1;
+
+    // Kalau geser ke kanan tapi sudah mentok, putar balik ke awal (biar bisa "gerak sendiri" terus-menerus)
+    if (direction > 0 && track.scrollLeft >= maxScroll) {
+      track.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+    // Kalau geser ke kiri tapi sudah di awal, lompat ke akhir
+    if (direction < 0 && track.scrollLeft <= 0) {
+      track.scrollTo({ left: maxScroll, behavior: "smooth" });
+      return;
+    }
+
+    track.scrollBy({ left: direction * step, behavior: "smooth" });
+  }
+
+  function startAuto() {
+    if (!autoScroll) return;
+    stopAuto();
+    autoTimer = setInterval(() => scrollByDirection(1), intervalMs);
+  }
+
+  function stopAuto() {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  function pauseThenResume() {
+    if (!autoScroll) return;
+    stopAuto();
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(startAuto, 4000);
+  }
+
+  updateButtons();
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      scrollByDirection(1);
+      pauseThenResume();
+    });
+  }
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      scrollByDirection(-1);
+      pauseThenResume();
+    });
+  }
+
+  track.addEventListener("scroll", updateButtons);
+  window.addEventListener("resize", updateButtons);
+
+  if (autoScroll) {
+    startAuto();
+
+    // Berhenti sebentar saat disentuh/di-hover, jalan lagi otomatis setelahnya
+    track.addEventListener("mouseenter", stopAuto);
+    track.addEventListener("mouseleave", startAuto);
+    track.addEventListener("touchstart", stopAuto, { passive: true });
+    track.addEventListener("touchend", pauseThenResume, { passive: true });
+    track.addEventListener("wheel", pauseThenResume, { passive: true });
+  }
+}
+
 // ================= Projects: Carousel Geser ke Samping =================
-const projectsTrack = document.getElementById("projectsTrack");
-const projectsPrev = document.getElementById("projectsPrev");
-const projectsNext = document.getElementById("projectsNext");
+initCarousel({
+  trackId: "projectsTrack",
+  prevId: "projectsPrev",
+  nextId: "projectsNext",
+  cardSelector: ".project-card",
+  autoScroll: false,
+});
 
-function updateProjectButtons() {
-  if (!projectsTrack || !projectsPrev || !projectsNext) return;
-
-  const maxScroll = projectsTrack.scrollWidth - projectsTrack.clientWidth - 1;
-
-  // Di awal (belum discroll sama sekali): tombol kiri nonaktif dulu,
-  // baru aktif setelah tombol kanan/geser kanan pernah dipakai.
-  projectsPrev.disabled = projectsTrack.scrollLeft <= 0;
-  projectsNext.disabled = projectsTrack.scrollLeft >= maxScroll;
-}
-
-function scrollProjects(direction) {
-  if (!projectsTrack) return;
-
-  const firstCard = projectsTrack.querySelector(".project-card");
-  if (!firstCard) return;
-
-  const trackStyle = window.getComputedStyle(projectsTrack);
-  const gap = parseFloat(trackStyle.columnGap || trackStyle.gap) || 0;
-  const distance = firstCard.getBoundingClientRect().width + gap;
-
-  projectsTrack.scrollBy({ left: direction * distance, behavior: "smooth" });
-}
-
-if (projectsTrack && projectsPrev && projectsNext) {
-  // Saat halaman baru dibuka, tombol kiri belum bisa dipakai (belum ada yang digeser)
-  updateProjectButtons();
-
-  projectsNext.addEventListener("click", () => scrollProjects(1));
-  projectsPrev.addEventListener("click", () => scrollProjects(-1));
-
-  projectsTrack.addEventListener("scroll", updateProjectButtons);
-  window.addEventListener("resize", updateProjectButtons);
-}
+// ================= Certifications: Carousel Geser + Gerak Otomatis =================
+initCarousel({
+  trackId: "certTrack",
+  prevId: "certPrev",
+  nextId: "certNext",
+  cardSelector: ".cert-card",
+  autoScroll: true,
+  intervalMs: 3200,
+});
 
 // ================= Certifications: Popup / Lightbox =================
 const certCards = document.querySelectorAll(".cert-card");
@@ -102,7 +179,7 @@ function openLightbox(card) {
 
   lightbox.classList.add("active");
   lightbox.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden"; // kunci scroll halaman belakang popup
+  document.body.style.overflow = "hidden";
 }
 
 function closeLightbox() {
@@ -122,12 +199,10 @@ if (lightbox && certCards.length) {
     lightboxClose.addEventListener("click", closeLightbox);
   }
 
-  // Klik di luar konten popup (area gelap) menutup popup
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) closeLightbox();
   });
 
-  // Tombol Escape menutup popup
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && lightbox.classList.contains("active")) {
       closeLightbox();
