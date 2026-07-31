@@ -25,6 +25,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#documentation">Documentation</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
@@ -189,67 +190,119 @@
   <!-- ============ PROJECTS (bagian terpenting) ============ -->
   <section id="projects">
     <div class="container">
-      <p class="eyebrow">Portfolio</p>
-      <h2 class="section-title">Proyek Unggulan</h2>
-      <div class="projects-grid">
-        <!-- Proyek Utama / Featured -->
-        <div class="project-card featured">
+
+      <div class="section-head-row">
+        <div>
+          <p class="eyebrow">Portfolio</p>
+          <h2 class="section-title">Proyek</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="projectsPrev" aria-label="Proyek sebelumnya">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn" id="projectsNext" aria-label="Proyek berikutnya">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="projects-track" id="projectsTrack">
+
+        <div class="project-card">
           <div class="project-thumb">
-            <!-- Ganti div di bawah ini dengan <img src="assets/images/proyek-1.jpg" alt="Nama Proyek"> -->
-            <div class="photo-placeholder"><i class="fa-solid fa-diagram-project"></i></div>
+            <img src="assets\screenshot-1785464991554.png" alt="Anotasi">
           </div>
           <div class="project-body">
-            <span class="project-tag-featured">Proyek Utama</span>
-            <h3>Nama Proyek Unggulan</h3>
-            <p>Deskripsi singkat proyek: masalah yang diselesaikan, peran kamu di proyek ini, dan hasil/dampaknya.</p>
+            <h3>Autolabeling Polygon</h3>
+            <p>Algoritma otomatisasi pembuatan anotasi polygon untuk area segmentasi biji kopi</p>
             <div class="project-tags">
-              <span>React</span>
-              <span>Next.js</span>
-              <span>Tailwind CSS</span>
+              <span>Python</span>
+              <span>Computer Vision</span>
+              <span>Pandas</span>
             </div>
             <div class="project-links">
-              <a href="#" class="btn">Lihat Demo</a>
-              <a href="#" class="btn btn-outline"><i class="fa-brands fa-github"></i> Source Code</a>
+              <a href="https://visualisasi-anotasi-sam-syamsulmaarip.streamlit.app/" class="btn-link">Live Demo <i class="fa-solid fa-arrow-up-right"></i></a>
+              <a href="https://github.com/syamsulmaarip05/anotasi-polygon.git" class="btn-link"><i class="fa-brands fa-github"></i> Code</a>
             </div>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-thumb">
-            <div class="photo-placeholder"><i class="fa-solid fa-diagram-project"></i></div>
+            <img src="assets\screenshot-1785467563172.png" alt="PELATIHAN">
           </div>
           <div class="project-body">
-            <h3>Nama Proyek 2</h3>
-            <p>Deskripsi singkat mengenai fitur utama dan teknologi yang digunakan dalam proyek ini.</p>
+            <h3>Modeling Deteksi Objek</h3>
+            <p>Pelatihan model deteksi objek biji kopi menggunakan YOLOv11-Seg</p>
             <div class="project-tags">
+              <span>PyTorch</span>
+              <span>Yolov11-Seg</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/syamsulmaarip05/deteksi-biji-kopi-cacat.git" class="btn-link"><i class="fa-brands fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="assets\screenshot-1785468572212.png" alt="Web Aplikasi Penilaian Esai Otomatis">
+          </div>
+          <div class="project-body">
+            <h3>Penilaian Esai Otomatis</h3>
+            <p>Sistem otomatis untuk menilai jawaban esai menggunakan teknik pemrosesan bahasa alami (NLP).</p>
+            <div class="project-tags">
+              <span>python</span>
+              <span>FLask</span>
+              <span>Excel</span>
               <span>HTML</span>
               <span>CSS</span>
-              <span>JavaScript</span>
             </div>
             <div class="project-links">
-              <a href="#" class="btn-link">Live Demo <i class="fa-solid fa-arrow-up-right"></i></a>
-              <a href="#" class="btn-link"><i class="fa-brands fa-github"></i> Code</a>
+              <a href="https://ieeexplore.ieee.org/abstract/document/11605827/" class="btn-link">Publikasi<i class="fa-solid fa-arrow-up-right"></i></a>
+              <a href="https://github.com/syamsulmaarip05/NLPRENDER.git" class="btn-link"><i class="fa-brands fa-github"></i> Code</a>
             </div>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-thumb">
-            <div class="photo-placeholder"><i class="fa-solid fa-diagram-project"></i></div>
+            <img src="assets\1759823508763 (1).jpg" alt="App Deteksi Warna Kematangan Kopi">
           </div>
           <div class="project-body">
-            <h3>Nama Proyek 3</h3>
-            <p>Deskripsi singkat mengenai fitur utama dan teknologi yang digunakan dalam proyek ini.</p>
+            <h3>Deteksi Warna Kematangan Kopi</h3>
+            <p>Sistem deteksi warna kematangan biji kopi menggunakan teknik Deep Learning</p>
             <div class="project-tags">
-              <span>Vue</span>
-              <span>Firebase</span>
+              <span>Deep Learning</span>
+              <span>Flutter</span>
+              <span>Python</span>
             </div>
             <div class="project-links">
-              <a href="#" class="btn-link">Live Demo <i class="fa-solid fa-arrow-up-right"></i></a>
-              <a href="#" class="btn-link"><i class="fa-brands fa-github"></i> Code</a>
+              <a href="https://jutif.if.unsoed.ac.id/index.php/jurnal/article/view/5400" class="btn-link">Publikasi<i class="fa-solid fa-arrow-up-right"></i></a>
+              <a href="https://github.com/syamsulmaarip05/NLPRENDER" class="btn-link"><i class="fa-brands fa-github"></i> Code</a>
             </div>
           </div>
         </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="assets\1719123587008.jpg" alt="Prediksi Harapan Hidup Indonesia">
+          </div>
+          <div class="project-body">
+            <h3>Prediksi Harapan Hidup Indonesia</h3>
+            <p>Sistem prediksi harapan hidup Indonesia menggunakan teknik Interpolasi Polinom Lagrange</p>
+            <div class="project-tags">
+              <span>Excel</span>
+              <span>Python</span>
+              <span>Statistics</span>
+            </div>
+            <div class="project-links">
+              <a href="https://e-journal.usd.ac.id/index.php/IJASST/article/view/9167" class="btn-link">Publikasi<i
+                  class="fa-solid fa-arrow-up-right"></i></a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -294,15 +347,38 @@
               Mengembangkan model machine learning untuk prediksi bencana banjir.
             </p>
           </div>
-          
+
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <span class="timeline-year">September – November 2025</span>
+            <span class="timeline-year">September – November 2024</span>
             <h3>Asisten Praktikum Pemrograman Dasar</h3>
             <p class="timeline-place">Program Studi Informatika UNSIL | Freelance</p>
             <p>
               Membantu mahasiswa memahami konsep algoritma dan pemrograman,
               memberikan bimbingan praktikum, serta menilai tugas mahasiswa.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-year">Desember 2023 – Desember 2024</span>
+            <h3>Ketua Forum Mahasiswa KIP-K Univeristas Siliwangi</h3>
+            <p class="timeline-place">Universitas Siliwangi | Organisasi</p>
+            <p>
+              Memimpin dan mengelola kegiatan organisasi mahasiswa KIP-K, termasuk
+              perencanaan program, koordinasi anggota, dan pelaksanaan kegiatan
+              sosial.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-year">Februari 2023 – November 2022</span>
+            <h3>Anggota Kominfo RUMAH KIP-K</h3>
+            <p class="timeline-place">Universitas Siliwangi | Organisasi</p>
+            <p>
+              Mengelola komunikasi dan informasi organisasi, termasuk media sosial,
+              publikasi, dan dokumentasi kegiatan.
             </p>
           </div>
 
@@ -320,66 +396,80 @@
     <div class="container">
       <p class="eyebrow">Certifications</p>
       <h2 class="section-title">Sertifikasi</h2>
+      <p class="section-desc">Klik salah satu sertifikasi untuk melihat foto/dokumen lengkap beserta keterangannya.</p>
+
       <div class="cert-grid">
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
-          <h3>Nama Sertifikasi 1</h3>
-          <p class="timeline-place">Penerbit — 2025</p>
+
+        <div class="cert-card" data-title="Nama Sertifikasi 1"
+          data-desc="Penerbit — 2025. Deskripsi singkat mengenai sertifikasi ini dan konteks pencapaiannya."
+          data-image="assets/certificates/sertifikat-1.jpg">
+          <div class="cert-thumb">
+            <!-- Ganti div di bawah ini dengan <img src="assets/certificates/sertifikat-1.jpg" alt="Nama Sertifikasi 1" class="cert-photo"> -->
+            <div class="photo-placeholder"><i class="fa-solid fa-certificate"></i></div>
+          </div>
+          <div class="cert-info">
+            <h3>Nama Sertifikasi 1</h3>
+            <p class="timeline-place">Penerbit — 2025</p>
+            <span class="cert-view"><i class="fa-solid fa-magnifying-glass"></i> Lihat Sertifikat</span>
+          </div>
         </div>
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
-          <h3>Nama Sertifikasi 2</h3>
-          <p class="timeline-place">Penerbit — 2024</p>
+
+        <div class="cert-card" data-title="Nama Sertifikasi 2"
+          data-desc="Penerbit — 2024. Deskripsi singkat mengenai sertifikasi ini dan konteks pencapaiannya."
+          data-image="assets/certificates/sertifikat-2.jpg">
+          <div class="cert-thumb">
+            <div class="photo-placeholder"><i class="fa-solid fa-certificate"></i></div>
+          </div>
+          <div class="cert-info">
+            <h3>Nama Sertifikasi 2</h3>
+            <p class="timeline-place">Penerbit — 2024</p>
+            <span class="cert-view"><i class="fa-solid fa-magnifying-glass"></i> Lihat Sertifikat</span>
+          </div>
         </div>
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
-          <h3>Nama Sertifikasi 3</h3>
-          <p class="timeline-place">Penerbit — 2024</p>
+
+        <div class="cert-card" data-title="Nama Sertifikasi 3"
+          data-desc="Penerbit — 2024. Deskripsi singkat mengenai sertifikasi ini dan konteks pencapaiannya."
+          data-image="assets/certificates/sertifikat-3.jpg">
+          <div class="cert-thumb">
+            <div class="photo-placeholder"><i class="fa-solid fa-certificate"></i></div>
+          </div>
+          <div class="cert-info">
+            <h3>Nama Sertifikasi 3</h3>
+            <p class="timeline-place">Penerbit — 2024</p>
+            <span class="cert-view"><i class="fa-solid fa-magnifying-glass"></i> Lihat Sertifikat</span>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ============ SERVICES ============ -->
-  <section id="resume">
+  <!-- ============ DOCUMENTATION (Dokumentasi Foto) ============ -->
+  <section id="documentation">
     <div class="container">
-      <div class="services-head">
-        <p class="eyebrow">My Services</p>
-        <h2 class="section-title">What Can I Do</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon"><i class="fa-solid fa-pen-ruler"></i></div>
-          <h3>Creative Design</h3>
-          <p>Memanfaatkan elemen dan estetika artistik untuk menciptakan desain yang menarik dan sedap dipandang.</p>
+      <p class="eyebrow">Documentation</p>
+      <h2 class="section-title">Dokumentasi Kegiatan</h2>
+      <p class="section-desc">Kumpulan foto kegiatan, penelitian, dan momen-momen penting selama berkarya.</p>
+
+      <div class="gallery-grid">
+        <!-- Ganti setiap div di bawah ini dengan <img src="assets/documentation/foto-1.jpg" alt="Keterangan foto"> -->
+        <div class="gallery-item">
+          <div class="photo-placeholder"><i class="fa-solid fa-image"></i></div>
         </div>
-        <div class="service-card">
-          <div class="service-icon"><i class="fa-solid fa-code"></i></div>
-          <h3>Clean Code</h3>
-          <p>Menulis kode yang terstruktur dengan baik, mudah dibaca, dan mudah dirawat mengikuti praktik terbaik.</p>
+        <div class="gallery-item">
+          <div class="photo-placeholder"><i class="fa-solid fa-image"></i></div>
         </div>
-        <div class="service-card">
-          <div class="service-icon"><i class="fa-regular fa-window-restore"></i></div>
-          <h3>User Interface</h3>
-          <p>Membuat antarmuka yang intuitif dan mudah digunakan dengan mengutamakan kejelasan dan pengalaman pengguna.
-          </p>
+        <div class="gallery-item">
+          <div class="photo-placeholder"><i class="fa-solid fa-image"></i></div>
         </div>
-        <div class="service-card">
-          <div class="service-icon"><i class="fa-regular fa-face-smile"></i></div>
-          <h3>User Experience</h3>
-          <p>Memahami perilaku dan preferensi pengguna untuk membuat produk yang intuitif, efisien, dan mudah digunakan.
-          </p>
+        <div class="gallery-item">
+          <div class="photo-placeholder"><i class="fa-solid fa-image"></i></div>
         </div>
-        <div class="service-card">
-          <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
-          <h3>Fast Support</h3>
-          <p>Menangani dan menyelesaikan permintaan dukungan dengan cepat sesuai kebutuhan aplikasi.</p>
+        <div class="gallery-item">
+          <div class="photo-placeholder"><i class="fa-solid fa-image"></i></div>
         </div>
-        <div class="service-card">
-          <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
-          <h3>Branding</h3>
-          <p>Menciptakan citra merek yang konsisten dan kohesif melalui penggunaan logo, skema warna, tipografi, dan
-            elemen branding lainnya.</p>
+        <div class="gallery-item">
+          <div class="photo-placeholder"><i class="fa-solid fa-image"></i></div>
         </div>
       </div>
     </div>
@@ -408,6 +498,20 @@
       <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
     </div>
   </footer>
+
+  <!-- ============ LIGHTBOX (Popup Sertifikat) ============ -->
+  <div class="lightbox" id="certLightbox" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Tutup">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img id="lightboxImage" src="" alt="">
+      <div class="lightbox-caption">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxDesc"></p>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
