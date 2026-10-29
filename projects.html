@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYAMSUL MAARIP | Portofolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="folder-open" data-page="projects">
+  <div class="system-status" aria-label="Status perangkat">
+    <span class="status-time" id="statusTime">9:41</span>
+    <span class="status-wifi" aria-label="Wi-Fi aktif"><i class="fa-solid fa-wifi" aria-hidden="true"></i></span>
+    <span class="status-battery" aria-label="Baterai 86 persen"><span class="battery-level"></span></span>
+  </div>
+  <header>
+    <div class="container navbar">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" aria-label="Beranda" title="Beranda"><i class="fa-solid fa-house" aria-hidden="true"></i></a></li>
+        <li><a href="about.html" aria-label="Tentang saya" title="Tentang saya"><i class="fa-solid fa-user" aria-hidden="true"></i></a></li>
+        <li><a href="education.html" aria-label="Pendidikan" title="Pendidikan"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></a></li>
+        <li><a href="skills.html" aria-label="Keahlian" title="Keahlian"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i></a></li>
+        <li><a href="projects.html" aria-label="Proyek" title="Proyek"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></a></li>
+        <li><a href="experience.html" aria-label="Pengalaman" title="Pengalaman"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></a></li>
+        <li><a href="certifications.html" aria-label="Sertifikat dan dokumentasi" title="Sertifikat dan dokumentasi"><i class="fa-solid fa-award" aria-hidden="true"></i></a></li>
+        <li><a href="contact.html" aria-label="Kontak" title="Kontak"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+  </header>
+<main>
+<div class="folder-view" data-folder-view="projects">
+    <div class="folder-toolbar">
+      <a href="index.html" class="back-to-folders" aria-label="Kembali ke semua folder" title="Kembali ke semua folder"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+      <span><i class="fa-regular fa-folder-open" aria-hidden="true"></i> Projects</span>
+    </div>
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <div class="container">
+
+      <div class="section-head-row">
+        <div>
+          <p class="eyebrow">Portfolio</p>
+          <h2 class="section-title">Proyek</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="projectsPrev" aria-label="Proyek sebelumnya">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn" id="projectsNext" aria-label="Proyek berikutnya">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="projects-track" id="projectsTrack">
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="assets/screenshot-1785464991554.png" alt="Anotasi">
+          </div>
+          <div class="project-body">
+            <h3>Autolabeling Polygon</h3>
+            <p>Algoritma otomatisasi pembuatan anotasi polygon untuk area segmentasi biji kopi</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Computer Vision</span>
+              <span>Pandas</span>
+            </div>
+            <div class="project-links">
+              <a href="https://visualisasi-anotasi-sam-syamsulmaarip.streamlit.app/" class="btn-link" target="_blank"
+                rel="noopener">Live Demo <i class="fa-solid fa-arrow-up-right"></i></a>
+              <a href="https://github.com/syamsulmaarip05/anotasi-polygon.git" class="btn-link" target="_blank"
+                rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="assets/screenshot-1785467563172.png" alt="PELATIHAN">
+          </div>
+          <div class="project-body">
+            <h3>Modeling Deteksi Objek</h3>
+            <p>Pelatihan model deteksi objek biji kopi menggunakan YOLOv11-Seg</p>
+            <div class="project-tags">
+              <span>PyTorch</span>
+              <span>Yolov11-Seg</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/syamsulmaarip05/deteksi-biji-kopi-cacat.git" class="btn-link" target="_blank"
+                rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="assets/screenshot-1785468572212.png" alt="Web Aplikasi Penilaian Esai Otomatis">
+          </div>
+          <div class="project-body">
+            <h3>Penilaian Esai Otomatis</h3>
+            <p>Sistem otomatis untuk menilai jawaban esai menggunakan teknik pemrosesan bahasa alami (NLP).</p>
+            <div class="project-tags">
+              <span>python</span>
+              <span>Flask</span>
+              <span>Excel</span>
+              <span>HTML</span>
+              <span>CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/11605827/" class="btn-link" target="_blank"
+                rel="noopener">Publikasi<i class="fa-solid fa-arrow-up-right"></i></a>
+              <a href="https://github.com/syamsulmaarip05/NLPRENDER.git" class="btn-link" target="_blank"
+                rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="assets/1759823508763 (1).jpg" alt="App Deteksi Warna Kematangan Kopi">
+          </div>
+          <div class="project-body">
+            <h3>Deteksi Warna Kopi</h3>
+            <p>Sistem deteksi warna kematangan biji kopi menggunakan teknik Deep Learning</p>
+            <div class="project-tags">
+              <span>Deep Learning</span>
+              <span>Flutter</span>
+              <span>Python</span>
+            </div>
+            <div class="project-links">
+              <a href="https://jutif.if.unsoed.ac.id/index.php/jurnal/article/view/5400" class="btn-link"
+                target="_blank" rel="noopener">Publikasi<i class="fa-solid fa-arrow-up-right"></i></a>
+              <a href="https://github.com/syamsulmaarip05/NLPRENDER" class="btn-link" target="_blank" rel="noopener"><i
+                  class="fa-brands fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="assets/1719123587008.jpg" alt="Prediksi Harapan Hidup Indonesia">
+          </div>
+          <div class="project-body">
+            <h3>Prediksi Harapan Hidup Indonesia</h3>
+            <p>Sistem prediksi harapan hidup Indonesia menggunakan teknik Interpolasi Polinom Lagrange</p>
+            <div class="project-tags">
+              <span>Excel</span>
+              <span>Python</span>
+              <span>Statistics</span>
+            </div>
+            <div class="project-links">
+              <a href="https://e-journal.usd.ac.id/index.php/IJASST/article/view/9167" class="btn-link" target="_blank"
+                rel="noopener">Publikasi<i class="fa-solid fa-arrow-up-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="assets/screenshot-1785494098067.png" alt="Analisis Program IUP">
+          </div>
+          <div class="project-body">
+            <h3>Analisis Program IUP</h3>
+            <p>Sistem Prediksi Analisis Program International Undergraduate Porgam (IUP) di indonesia berbasis streamlit</p>
+            <div class="project-tags">
+              <span>Excel</span>
+              <span>Python</span>
+              <span>Streamlit</span>
+            </div>
+            <div class="project-links">
+              <a href="https://kelompok6b.streamlit.app/" class="btn-link" target="_blank"
+                rel="noopener">Live Demo <i class="fa-solid fa-arrow-up-right"></i></a>
+              <a href="https://github.com/syamsulmaarip05/PROJEKVINIX" class="btn-link" target="_blank" rel="noopener"><i
+                  class="fa-brands fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+        <div class="project-thumb">
+          <img src="assets/Screenshot_2-8-2026_11439_github.com.jpeg" alt="Email Otomatis">
+        </div>
+        <div class="project-body">
+          <h3>Email Otomatis</h3>
+          <p>Sistem Otomatis untuk Mengirim Email Berbasis Python</p>
+          <div class="project-tags">
+            <span>Excel</span>
+            <span>Python</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/syamsulmaarip05/email_otomatis" class="btn-link" target="_blank" rel="noopener"><i
+                class="fa-brands fa-github"></i> Code</a>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

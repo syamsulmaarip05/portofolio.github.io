@@ -1,18 +1,37 @@
-// ================= Mobile Navbar =================
-const navToggle = document.getElementById("navToggle");
+// ================= Portfolio folder navigation =================
 const navLinks = document.getElementById("navLinks");
+const currentPage = document.body.dataset.page || "home";
 
-if (navToggle && navLinks) {
-  navToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-  });
-
+document.body.classList.toggle("folder-open", currentPage !== "home");
+if (navLinks) {
   navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-    });
+    const targetPage = new URL(link.href, window.location.href).pathname
+      .split("/")
+      .pop()
+      .replace(/\.html$/, "");
+    const isActive =
+      currentPage === "home"
+        ? targetPage === "index"
+        : targetPage === currentPage;
+    link.classList.toggle("active", isActive);
+    if (isActive) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
   });
 }
+
+const statusTime = document.getElementById("statusTime");
+
+function updateStatusTime() {
+  if (!statusTime) return;
+  statusTime.textContent = new Intl.DateTimeFormat("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(new Date());
+}
+
+updateStatusTime();
+window.setInterval(updateStatusTime, 30000);
 
 // ================= Experience: Expandable Timeline =================
 const timeline = document.getElementById("experienceTimeline");
