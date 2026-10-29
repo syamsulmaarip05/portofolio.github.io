@@ -51,50 +51,109 @@ function renderAbout(page) {
   return `
     <div class="folder-view" data-folder-view="about">
       ${folderToolbar(page)}
-      <section class="hero container">
-        <div class="hero-text">
-          <p class="hello">${escapeHtml(hero.intro)}</p>
-          <h1>${escapeHtml(hero.name)}</h1>
-          <p>${escapeHtml(hero.subtitle)}</p>
-          <a href="contact.html" class="btn">${icon("fa-solid fa-paper-plane")} ${escapeHtml(hero.contactLabel)}</a>
+      <div class="about-presentation" aria-label="Presentasi tentang saya">
+        <button class="about-slide-button" id="aboutPrevious" aria-label="Halaman sebelumnya" disabled>${icon("fa-solid fa-chevron-left")}</button>
+        <div class="about-slides" id="aboutSlides" tabindex="0" aria-label="Geser horizontal untuk melihat halaman berikutnya">
+          <div class="about-slide">
+            <section class="hero container" aria-label="Perkenalan">
+              <div class="hero-text">
+                <p class="hello">${escapeHtml(hero.intro)}</p>
+                <h1>${escapeHtml(hero.name)}</h1>
+                <p>${escapeHtml(hero.subtitle)}</p>
+                <a href="contact.html" class="btn">${icon("fa-solid fa-paper-plane")} ${escapeHtml(hero.contactLabel)}</a>
+              </div>
+              <div class="photo-box"><img src="${escapeHtml(hero.image)}" alt="${escapeHtml(hero.imageAlt)}"></div>
+            </section>
+          </div>
+          <div class="about-slide">
+            <section class="about container" id="about" aria-label="Profil diri">
+              <div class="photo-box"><img src="${escapeHtml(bio.image)}" alt="${escapeHtml(bio.imageAlt)}"></div>
+              <div class="about-content">
+                <p class="eyebrow">${escapeHtml(bio.eyebrow)}</p>
+                <h2 class="section-title">${escapeHtml(bio.title)}</h2>
+                <p>${escapeHtml(bio.description)}</p>
+                <a href="${escapeHtml(bio.publicationUrl)}" class="btn" target="_blank" rel="noopener">${escapeHtml(bio.publicationLabel)}</a>
+              </div>
+            </section>
+          </div>
         </div>
-        <div class="photo-box"><img src="${escapeHtml(hero.image)}" alt="${escapeHtml(hero.imageAlt)}"></div>
-      </section>
-      <section class="about container" id="about">
-        <div class="photo-box"><img src="${escapeHtml(bio.image)}" alt="${escapeHtml(bio.imageAlt)}"></div>
-        <div class="about-content">
-          <p class="eyebrow">${escapeHtml(bio.eyebrow)}</p>
-          <h2 class="section-title">${escapeHtml(bio.title)}</h2>
-          <p>${escapeHtml(bio.description)}</p>
-          <a href="${escapeHtml(bio.publicationUrl)}" class="btn" target="_blank" rel="noopener">${escapeHtml(bio.publicationLabel)}</a>
-        </div>
-      </section>
+        <button class="about-slide-button" id="aboutNext" aria-label="Halaman berikutnya">${icon("fa-solid fa-chevron-right")}</button>
+        <div class="about-slide-count" aria-live="polite"><span id="aboutCurrentSlide">01</span><span aria-hidden="true"> / 02</span></div>
+      </div>
     </div>`;
 }
 
 function renderEducation(page) {
-  const items = page.items
+  const folders = page.items
     .map(
-      (item) => `
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <span class="timeline-year">${escapeHtml(item.period)}</span>
-          <h3>${escapeHtml(item.title)}</h3>
-          <p class="timeline-place">${escapeHtml(item.place)}</p>
-          ${item.details.map((detail) => `<p>${escapeHtml(detail)}</p>`).join("")}
-        </div>`,
+      (item, index) => `
+        <button class="education-folder" type="button" data-education-index="${index}" aria-haspopup="dialog" aria-controls="educationDialog">
+          <span class="education-folder-icon">${icon("fa-solid fa-folder")}</span>
+          <span class="education-folder-label">${escapeHtml(item.folderLabel)}</span>
+          <span class="education-folder-meta">${escapeHtml(item.period)}</span>
+        </button>`,
     )
+    .join("");
+
+  const panels = page.items
+    .map((item, index) => {
+      const details = item.details
+        .map(
+          (detail) =>
+            `<li>${icon("fa-solid fa-star")}<span>${escapeHtml(detail.replace(/^\s*[-–—]\s*/, ""))}</span></li>`,
+        )
+        .join("");
+      const slides = (item.gallery || [])
+        .map(
+          (image) => `
+            <figure class="education-photo-slide">
+              <img src="${escapeHtml(image.image)}" alt="${escapeHtml(image.alt)}">
+              <figcaption>${escapeHtml(image.caption || image.alt)}</figcaption>
+            </figure>`,
+        )
+        .join("");
+      const gallery = slides
+        ? `
+          <div class="education-gallery" data-education-gallery>
+            <div class="education-gallery-viewport">
+              <div class="education-gallery-track">${slides}</div>
+            </div>
+            <div class="education-gallery-controls">
+              <button type="button" class="education-gallery-button" data-education-prev aria-label="Foto sebelumnya">${icon("fa-solid fa-chevron-left")}</button>
+              <span class="education-gallery-count" aria-live="polite"></span>
+              <button type="button" class="education-gallery-button" data-education-next aria-label="Foto berikutnya">${icon("fa-solid fa-chevron-right")}</button>
+            </div>
+          </div>`
+        : `
+          <div class="education-gallery-empty">
+            ${icon("fa-regular fa-images")}
+            <p>Dokumentasi foto untuk folder ini belum ditambahkan.</p>
+          </div>`;
+
+      return `
+        <section class="education-dialog-panel" data-education-panel="${index}" hidden>
+          <div class="education-dialog-info">
+            <span class="education-period">${icon("fa-regular fa-calendar")} ${escapeHtml(item.period)}</span>
+            <h2 id="educationDialogTitle-${index}">${escapeHtml(item.title)}</h2>
+            <p class="education-place">${icon("fa-solid fa-location-dot")} ${escapeHtml(item.place)}</p>
+            <ul class="education-highlights">${details}</ul>
+          </div>
+          ${gallery}
+        </section>`;
+    })
     .join("");
 
   return `
     <div class="folder-view" data-folder-view="education">
       ${folderToolbar(page)}
-      <section id="education"><div class="container">
-        <p class="eyebrow">${escapeHtml(page.eyebrow)}</p>
-        <h2 class="section-title">${escapeHtml(page.title)}</h2>
-        <div class="timeline">${items}</div>
-      </div></section>
-    </div>`;
+      <section class="education-home" aria-label="Folder pendidikan">
+        <div class="education-folders">${folders}</div>
+      </section>
+    </div>
+    <dialog class="education-dialog" id="educationDialog" aria-labelledby="educationDialogTitle-0">
+      <button class="education-dialog-close" type="button" data-education-close aria-label="Tutup informasi">${icon("fa-solid fa-xmark")}</button>
+      ${panels}
+    </dialog>`;
 }
 
 function renderSkills(page) {
@@ -109,7 +168,6 @@ function renderSkills(page) {
     <div class="folder-view" data-folder-view="skills">
       ${folderToolbar(page)}
       <section id="skills"><div class="container">
-        <p class="eyebrow">${escapeHtml(page.eyebrow)}</p>
         <h2 class="section-title">${escapeHtml(page.title)}</h2>
         <div class="skills-row">${items}</div>
       </div></section>
@@ -117,46 +175,200 @@ function renderSkills(page) {
 }
 
 function renderProjects(page) {
-  const cards = page.items
-    .map((item) => {
-      const tags = item.tags
-        .map((tag) => `<span>${escapeHtml(tag)}</span>`)
-        .join("");
+  const folders = page.items
+    .map(
+      (item, index) => `
+        <button class="project-folder" type="button" data-project-index="${index}" aria-haspopup="dialog" aria-controls="projectDialog">
+          <span class="project-folder-icon">${icon("fa-solid fa-folder")}</span>
+          <span class="project-folder-label">${escapeHtml(item.title)}</span>
+        </button>`,
+    )
+    .join("");
+  const panels = page.items
+    .map((item, index) => {
       const links = item.links
         .map(
-          (link) => `
-            <a href="${escapeHtml(link.url)}" class="btn-link"${link.external ? ' target="_blank" rel="noopener"' : ""}>
-              ${escapeHtml(link.label)} ${link.icon ? icon(link.icon) : ""}
-            </a>`,
+            (link) => `
+              <a href="${escapeHtml(link.url)}" class="project-dialog-link"${link.external ? ' target="_blank" rel="noopener"' : ""}>
+                ${escapeHtml(link.label)} ${link.icon ? icon(link.icon) : icon("fa-solid fa-arrow-up-right-from-square")}
+              </a>`,
         )
         .join("");
+      const presentation = item.presentation
+        ? Array.from({ length: item.presentation.slideCount }, (_, slideIndex) => {
+            const pageImage = item.presentation.slideFilePattern
+              .replace("{n}", String(slideIndex + 1));
+            return `
+              <article class="project-presentation-slide project-file-slide" data-project-slide="${slideIndex + 1}" aria-label="Halaman ${slideIndex + 1}" hidden>
+                <img class="project-presentation-page" src="${escapeHtml(pageImage)}" alt="" loading="lazy">
+              </article>`;
+          }).join("")
+        : "";
+
       return `
-        <div class="project-card">
-          <div class="project-thumb"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt)}"></div>
-          <div class="project-body">
-            <h3>${escapeHtml(item.title)}</h3>
-            <p>${escapeHtml(item.description)}</p>
-            <div class="project-tags">${tags}</div>
-            <div class="project-links">${links}</div>
-          </div>
-        </div>`;
+        <section class="project-dialog-panel" data-project-panel="${index}" data-project-title="${escapeHtml(item.title)}" hidden>
+            <article class="project-presentation-slide" data-project-slide="0" aria-labelledby="project-title-${index}">
+              <div class="project-presentation-image"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt)}"></div>
+              <div class="project-presentation-copy">
+                <span class="project-slide-kicker">${icon("fa-solid fa-folder-open")} Detail Proyek</span>
+                <h2 id="project-title-${index}">${escapeHtml(item.title)}</h2>
+                <p>${escapeHtml(item.description)}</p>
+                <div class="project-goal">
+                  <h3>Tujuan</h3>
+                  <p>${escapeHtml(item.goal)}</p>
+                </div>
+                <div class="project-dialog-links">${links}</div>
+              </div>
+            </article>
+            ${presentation}
+        </section>`;
     })
     .join("");
 
   return `
     <div class="folder-view" data-folder-view="projects">
       ${folderToolbar(page)}
-      <section id="projects"><div class="container">
-        <div class="section-head-row">
-          <div><p class="eyebrow">${escapeHtml(page.eyebrow)}</p><h2 class="section-title">${escapeHtml(page.title)}</h2></div>
-          <div class="carousel-controls">
-            <button class="carousel-btn" id="projectsPrev" aria-label="Proyek sebelumnya">${icon("fa-solid fa-chevron-left")}</button>
-            <button class="carousel-btn" id="projectsNext" aria-label="Proyek berikutnya">${icon("fa-solid fa-chevron-right")}</button>
-          </div>
-        </div>
-        <div class="projects-track" id="projectsTrack">${cards}</div>
-      </div></section>
-    </div>`;
+      <section class="projects-home" aria-label="Folder proyek">
+        <div class="projects-folders">${folders}</div>
+      </section>
+    </div>
+    <dialog class="project-dialog" id="projectDialog" aria-label="Presentasi proyek" tabindex="-1">
+      <button class="project-dialog-close" type="button" data-project-close aria-label="Tutup presentasi">${icon("fa-solid fa-xmark")}</button>
+      <div class="project-dialog-slides">${panels}</div>
+      <div class="project-dialog-footer" data-project-footer hidden>
+        <button class="project-slide-button" type="button" data-project-prev aria-label="Slide sebelumnya">${icon("fa-solid fa-chevron-left")}</button>
+        <span class="project-slide-count" aria-live="polite"><span data-project-current>01</span> / <span data-project-total>02</span></span>
+        <button class="project-slide-button" type="button" data-project-next aria-label="Slide berikutnya">${icon("fa-solid fa-chevron-right")}</button>
+        <button class="project-slide-button project-fullscreen-button" type="button" data-project-fullscreen aria-label="Perbesar pop-up" aria-pressed="false" title="Perbesar pop-up">${icon("fa-solid fa-expand")}</button>
+      </div>
+    </dialog>`;
+}
+
+function initProjectsPresentation() {
+  const dialog = document.getElementById("projectDialog");
+  if (!dialog) return;
+
+  const folders = document.querySelectorAll(".project-folder");
+  const panels = [...dialog.querySelectorAll(".project-dialog-panel")];
+  const previous = dialog.querySelector("[data-project-prev]");
+  const next = dialog.querySelector("[data-project-next]");
+  const current = dialog.querySelector("[data-project-current]");
+  const total = dialog.querySelector("[data-project-total]");
+  const footer = dialog.querySelector("[data-project-footer]");
+  const closeButton = dialog.querySelector("[data-project-close]");
+  const fullscreenButton = dialog.querySelector("[data-project-fullscreen]");
+  let activePanel = null;
+  let activeFolder = null;
+  let activeSlide = 0;
+
+  function showSlide(slideIndex) {
+    if (!activePanel || !previous || !next || !current || !total || !footer) return;
+    const slides = [...activePanel.querySelectorAll(".project-presentation-slide")];
+    const lastSlide = slides.length - 1;
+    if (slideIndex < 0 || slideIndex > lastSlide) return;
+
+    activeSlide = slideIndex;
+    const isDocumentSlide = slides[activeSlide].classList.contains("project-file-slide");
+    dialog.classList.toggle("project-dialog-presentation", isDocumentSlide);
+    if (closeButton) closeButton.hidden = false;
+    slides.forEach((slide) => {
+      slide.hidden = Number(slide.dataset.projectSlide) !== activeSlide;
+    });
+    current.textContent = String(activeSlide + 1).padStart(2, "0");
+    total.textContent = String(slides.length).padStart(2, "0");
+    footer.hidden = slides.length === 1;
+    previous.disabled = activeSlide === 0;
+    next.disabled = activeSlide === lastSlide;
+    if (slides.length === 1) setExpanded(false);
+    if (isDocumentSlide && dialog.contains(document.activeElement)) dialog.focus();
+  }
+
+  function setExpanded(expanded) {
+    dialog.classList.toggle("project-dialog-expanded", expanded);
+    fullscreenButton?.setAttribute("aria-pressed", String(expanded));
+    fullscreenButton?.setAttribute(
+      "aria-label",
+      expanded ? "Kembalikan ukuran pop-up" : "Perbesar pop-up",
+    );
+    if (fullscreenButton) {
+      fullscreenButton.title = expanded
+        ? "Kembalikan ukuran pop-up"
+        : "Perbesar pop-up";
+      fullscreenButton.innerHTML = icon(
+        expanded ? "fa-solid fa-compress" : "fa-solid fa-expand",
+      );
+    }
+  }
+
+  folders.forEach((folder) => {
+    folder.addEventListener("click", () => {
+      activeFolder = folder;
+      activePanel = panels.find(
+        (panel) => panel.dataset.projectPanel === folder.dataset.projectIndex,
+      );
+      if (!activePanel) {
+        throw new Error(`Presentasi proyek tidak ditemukan untuk folder "${folder.dataset.projectIndex}"`);
+      }
+
+      panels.forEach((panel) => {
+        panel.hidden = panel !== activePanel;
+      });
+      dialog.setAttribute(
+        "aria-label",
+        `Presentasi proyek ${activePanel.dataset.projectTitle}`,
+      );
+      showSlide(0);
+      dialog.showModal();
+      closeButton?.focus();
+    });
+  });
+
+  previous?.addEventListener("click", () => {
+    if (activeSlide > 0) showSlide(activeSlide - 1);
+  });
+  next?.addEventListener("click", () => {
+    if (activePanel && activeSlide < activePanel.querySelectorAll(".project-presentation-slide").length - 1) {
+      showSlide(activeSlide + 1);
+    }
+  });
+  fullscreenButton?.addEventListener("click", () => {
+    setExpanded(fullscreenButton.getAttribute("aria-pressed") !== "true");
+  });
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      dialog.close();
+      return;
+    }
+
+    const lastSlide = activePanel
+      ? activePanel.querySelectorAll(".project-presentation-slide").length - 1
+      : 0;
+    if (event.key === "ArrowLeft" && activeSlide > 0) {
+      event.preventDefault();
+      showSlide(activeSlide - 1);
+    } else if (event.key === "ArrowRight" && activeSlide < lastSlide) {
+      event.preventDefault();
+      showSlide(activeSlide + 1);
+    }
+  });
+
+  closeButton?.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("close", () => {
+    setExpanded(false);
+    dialog.classList.remove("project-dialog-presentation");
+    if (closeButton) closeButton.hidden = false;
+    panels.forEach((panel) => {
+      panel.hidden = true;
+    });
+    activePanel = null;
+    activeFolder?.focus();
+    activeFolder = null;
+  });
 }
 
 function renderExperience(page) {
@@ -177,7 +389,6 @@ function renderExperience(page) {
     <div class="folder-view" data-folder-view="experience">
       ${folderToolbar(page)}
       <section id="experience"><div class="container">
-        <p class="eyebrow">${escapeHtml(page.eyebrow)}</p>
         <h2 class="section-title">${escapeHtml(page.title)}</h2>
         <div class="timeline-wrapper">
           <div class="timeline" id="experienceTimeline">${items}</div>
@@ -214,7 +425,7 @@ function renderCertifications(page) {
       ${folderToolbar(page)}
       <section id="certifications"><div class="container">
         <div class="section-head-row">
-          <div><p class="eyebrow">${escapeHtml(page.eyebrow)}</p><h2 class="section-title">${escapeHtml(page.title)}</h2></div>
+          <div><h2 class="section-title">${escapeHtml(page.title)}</h2></div>
           <div class="carousel-controls">
             <button class="carousel-btn" id="certPrev" aria-label="Sertifikat sebelumnya">${icon("fa-solid fa-chevron-left")}</button>
             <button class="carousel-btn" id="certNext" aria-label="Sertifikat berikutnya">${icon("fa-solid fa-chevron-right")}</button>
@@ -223,7 +434,6 @@ function renderCertifications(page) {
         <div class="cert-track" id="certTrack">${cards}</div>
       </div></section>
       <section id="documentation"><div class="container">
-        <p class="eyebrow">${escapeHtml(page.documentation.eyebrow)}</p>
         <h2 class="section-title">${escapeHtml(page.documentation.title)}</h2>
         <div class="gallery-grid">${gallery}</div>
       </div></section>
@@ -408,6 +618,144 @@ function initExperienceToggle() {
   });
 }
 
+function initAboutPresentation() {
+  const slides = document.getElementById("aboutSlides");
+  const previous = document.getElementById("aboutPrevious");
+  const next = document.getElementById("aboutNext");
+  const currentLabel = document.getElementById("aboutCurrentSlide");
+  if (!slides || !previous || !next || !currentLabel) return;
+
+  const panels = [...slides.querySelectorAll(".about-slide")];
+  if (panels.length < 2) return;
+
+  function updateControls() {
+    const activeIndex = Math.min(
+      panels.length - 1,
+      Math.round(slides.scrollLeft / slides.clientWidth),
+    );
+    previous.disabled = activeIndex === 0;
+    next.disabled = activeIndex === panels.length - 1;
+    currentLabel.textContent = String(activeIndex + 1).padStart(2, "0");
+  }
+
+  function goToSlide(direction) {
+    const activeIndex = Math.round(slides.scrollLeft / slides.clientWidth);
+    const nextIndex = Math.max(0, Math.min(panels.length - 1, activeIndex + direction));
+    slides.scrollTo({
+      left: nextIndex * slides.clientWidth,
+      behavior: "smooth",
+    });
+  }
+
+  previous.addEventListener("click", () => goToSlide(-1));
+  next.addEventListener("click", () => goToSlide(1));
+  slides.addEventListener("scroll", updateControls, { passive: true });
+  slides.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToSlide(1);
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToSlide(-1);
+    }
+  });
+  window.addEventListener("resize", updateControls);
+  updateControls();
+}
+
+function initEducationFolders() {
+  const dialog = document.getElementById("educationDialog");
+  if (!dialog) return;
+
+  const folders = document.querySelectorAll(".education-folder");
+  const panels = [...dialog.querySelectorAll(".education-dialog-panel")];
+  const closeButton = dialog.querySelector("[data-education-close]");
+  let activePanel = null;
+  let activeFolder = null;
+
+  function updateGallery(gallery, slideIndex) {
+    const slides = gallery.querySelectorAll(".education-photo-slide");
+    const track = gallery.querySelector(".education-gallery-track");
+    const counter = gallery.querySelector(".education-gallery-count");
+    const previous = gallery.querySelector("[data-education-prev]");
+    const next = gallery.querySelector("[data-education-next]");
+    if (!track || !counter || !previous || !next) return;
+
+    gallery.dataset.slideIndex = String(slideIndex);
+    track.style.transform = `translateX(-${slideIndex * 100}%)`;
+    counter.textContent = `${String(slideIndex + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+    previous.disabled = slideIndex === 0;
+    next.disabled = slideIndex === slides.length - 1;
+  }
+
+  folders.forEach((folder) => {
+    folder.addEventListener("click", () => {
+      activeFolder = folder;
+      activePanel = panels.find(
+        (panel) => panel.dataset.educationPanel === folder.dataset.educationIndex,
+      );
+      if (!activePanel) {
+        throw new Error(`Informasi pendidikan tidak ditemukan untuk folder "${folder.dataset.educationIndex}"`);
+      }
+
+      panels.forEach((panel) => {
+        panel.hidden = panel !== activePanel;
+      });
+      dialog.setAttribute(
+        "aria-labelledby",
+        activePanel.querySelector("h2").id,
+      );
+
+      const gallery = activePanel.querySelector("[data-education-gallery]");
+      if (gallery) updateGallery(gallery, 0);
+      dialog.showModal();
+      closeButton?.focus();
+    });
+  });
+
+  dialog.querySelectorAll("[data-education-prev], [data-education-next]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const gallery = activePanel?.querySelector("[data-education-gallery]");
+      if (!gallery) return;
+      const currentIndex = Number(gallery.dataset.slideIndex || 0);
+      const direction = button.hasAttribute("data-education-next") ? 1 : -1;
+      const nextIndex = currentIndex + direction;
+      const slideCount = gallery.querySelectorAll(".education-photo-slide").length;
+      if (nextIndex >= 0 && nextIndex < slideCount) updateGallery(gallery, nextIndex);
+    });
+  });
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      dialog.close();
+      return;
+    }
+
+    const gallery = activePanel?.querySelector("[data-education-gallery]");
+    if (!gallery || (event.key !== "ArrowLeft" && event.key !== "ArrowRight")) return;
+    event.preventDefault();
+    const currentIndex = Number(gallery.dataset.slideIndex || 0);
+    const nextIndex = currentIndex + (event.key === "ArrowRight" ? 1 : -1);
+    const slideCount = gallery.querySelectorAll(".education-photo-slide").length;
+    if (nextIndex >= 0 && nextIndex < slideCount) updateGallery(gallery, nextIndex);
+  });
+
+  closeButton?.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("close", () => {
+    panels.forEach((panel) => {
+      panel.hidden = true;
+    });
+    activePanel = null;
+    activeFolder?.focus();
+    activeFolder = null;
+  });
+}
+
 function initLightbox() {
   const lightbox = document.getElementById("certLightbox");
   const image = document.getElementById("lightboxImage");
@@ -484,6 +832,9 @@ async function loadPortfolioPage() {
       autoScroll: true,
     });
     initExperienceToggle();
+    initEducationFolders();
+    initProjectsPresentation();
+    initAboutPresentation();
     initLightbox();
   } catch (error) {
     console.error("Portofolio gagal dimuat:", error);

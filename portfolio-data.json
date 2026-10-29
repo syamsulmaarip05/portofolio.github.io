@@ -65,11 +65,10 @@
       }
     },
     "education": {
-      "folderLabel": "Education",
-      "eyebrow": "Education",
-      "title": "Riwayat Pendidikan",
+      "folderLabel": "Pendidikan",
       "items": [
         {
+          "folderLabel": "S1 Informatika",
           "period": "2022 — 2026",
           "title": "S1 Informatika",
           "place": "Universitas Siliwangi, Tasikmalaya, IPK: 3.89",
@@ -78,9 +77,37 @@
             "- Ketua Organisasi Mahasiswa KIP-K Universitas Siliwangi 2024",
             "- Asisten Penelitian 2024 dan 2025",
             "- Asisten Praktikum 2024 dan 2025"
+          ],
+          "gallery": [
+            {
+              "image": "assets/1759850391005.jpg",
+              "alt": "Kegiatan sebagai Asisten Praktikum",
+              "caption": "Kegiatan sebagai Asisten Praktikum"
+            },
+            {
+              "image": "assets/20251009_105641.jpg",
+              "alt": "Kegiatan sebagai Asisten Penelitian",
+              "caption": "Kegiatan sebagai Asisten Penelitian"
+            },
+            {
+              "image": "assets/image1.png",
+              "alt": "Kegiatan organisasi sebagai Ketua Forum",
+              "caption": "Kegiatan organisasi sebagai Ketua Forum"
+            },
+            {
+              "image": "assets/image.png",
+              "alt": "Kegiatan Forum Mahasiswa",
+              "caption": "Kegiatan Forum Mahasiswa"
+            },
+            {
+              "image": "assets/WhatsApp Image 2026-07-31 at 5.30.53 PM.jpeg",
+              "alt": "Kegiatan penyusunan skripsi",
+              "caption": "Kegiatan penyusunan skripsi"
+            }
           ]
         },
         {
+          "folderLabel": "SMA",
           "period": "2019 — 2022",
           "title": "SMA Negeri 17 Garut",
           "place": "Matematika Ilmu Pengetahuan Alam (MIPA), Garut, Nilai: 90.03",
@@ -183,15 +210,20 @@
       ]
     },
     "projects": {
-      "folderLabel": "Projects",
+      "folderLabel": "Proyek",
       "eyebrow": "Portfolio",
       "title": "Proyek",
       "items": [
         {
           "title": "Autolabeling Polygon",
-          "description": "Algoritma otomatisasi pembuatan anotasi polygon untuk area segmentasi biji kopi",
+          "description": "Otomatisasi anotasi poligon untuk menandai bentuk biji kopi dan menyiapkan data segmentasi.",
+          "goal": "Mempercepat pembuatan anotasi poligon biji kopi yang mengikuti kontur objek.",
           "image": "assets/screenshot-1785464991554.png",
           "imageAlt": "Anotasi",
+          "presentation": {
+            "slideFilePattern": "assets/presentasi-tugas-akhir/{n}.jpg",
+            "slideCount": 18
+          },
           "tags": [
             "Python",
             "Computer Vision",
@@ -214,9 +246,14 @@
         },
         {
           "title": "Modeling Deteksi Objek",
-          "description": "Pelatihan model deteksi objek biji kopi menggunakan YOLOv11-Seg",
+          "description": "Pelatihan YOLOv11-Seg untuk mendeteksi sekaligus menyegmentasi cacat pada biji kopi.",
+          "goal": "Menghasilkan model yang mengenali cacat dan biji kopi normal serta menguji efisiensinya.",
           "image": "assets/screenshot-1785467563172.png",
           "imageAlt": "PELATIHAN",
+          "presentation": {
+            "slideFilePattern": "assets/presentasi-tugas-akhir/{n}.jpg",
+            "slideCount": 18
+          },
           "tags": [
             "PyTorch",
             "Yolov11-Seg"
@@ -233,6 +270,7 @@
         {
           "title": "Penilaian Esai Otomatis",
           "description": "Sistem otomatis untuk menilai jawaban esai menggunakan teknik pemrosesan bahasa alami (NLP).",
+          "goal": "Membantu menilai jawaban esai secara otomatis dengan pemrosesan bahasa alami.",
           "image": "assets/screenshot-1785468572212.png",
           "imageAlt": "Web Aplikasi Penilaian Esai Otomatis",
           "tags": [
@@ -260,6 +298,7 @@
         {
           "title": "Deteksi Warna Kopi",
           "description": "Sistem deteksi warna kematangan biji kopi menggunakan teknik Deep Learning",
+          "goal": "Mengidentifikasi tingkat kematangan biji kopi dari warnanya.",
           "image": "assets/1759823508763 (1).jpg",
           "imageAlt": "App Deteksi Warna Kematangan Kopi",
           "tags": [
@@ -285,6 +324,7 @@
         {
           "title": "Prediksi Harapan Hidup Indonesia",
           "description": "Sistem prediksi harapan hidup Indonesia menggunakan teknik Interpolasi Polinom Lagrange",
+          "goal": "Memperkirakan harapan hidup Indonesia menggunakan interpolasi polinom Lagrange.",
           "image": "assets/1719123587008.jpg",
           "imageAlt": "Prediksi Harapan Hidup Indonesia",
           "tags": [
@@ -304,6 +344,7 @@
         {
           "title": "Analisis Program IUP",
           "description": "Sistem Prediksi Analisis Program International Undergraduate Porgam (IUP) di indonesia berbasis streamlit",
+          "goal": "Menyajikan analisis program IUP di Indonesia melalui aplikasi interaktif.",
           "image": "assets/screenshot-1785494098067.png",
           "imageAlt": "Analisis Program IUP",
           "tags": [
@@ -329,6 +370,7 @@
         {
           "title": "Email Otomatis",
           "description": "Sistem Otomatis untuk Mengirim Email Berbasis Python",
+          "goal": "Mengotomatisasi proses pengiriman email menggunakan Python.",
           "image": "assets/Screenshot_2-8-2026_11439_github.com.jpeg",
           "imageAlt": "Email Otomatis",
           "tags": [
