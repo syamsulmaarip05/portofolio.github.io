@@ -1,0 +1,519 @@
+{
+  "folders": [
+    {
+      "id": "about",
+      "label": "About me",
+      "icon": "fa-user",
+      "color": "folder-peach"
+    },
+    {
+      "id": "education",
+      "label": "Education",
+      "icon": "fa-graduation-cap",
+      "color": "folder-yellow"
+    },
+    {
+      "id": "skills",
+      "label": "My skills",
+      "icon": "fa-wand-magic-sparkles",
+      "color": "folder-mint"
+    },
+    {
+      "id": "projects",
+      "label": "Projects",
+      "icon": "fa-code",
+      "color": "folder-lilac"
+    },
+    {
+      "id": "experience",
+      "label": "Experience",
+      "icon": "fa-briefcase",
+      "color": "folder-blue"
+    },
+    {
+      "id": "certifications",
+      "label": "Certificates",
+      "icon": "fa-award",
+      "color": "folder-coral"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "icon": "fa-envelope",
+      "color": "folder-paper"
+    }
+  ],
+  "pages": {
+    "about": {
+      "folderLabel": "About me",
+      "hero": {
+        "intro": "Hello, My Name Is",
+        "name": "SYAMSUL MAARIP",
+        "subtitle": "Fresh Graduate in Informatics Siliwangi University",
+        "image": "assets/Syamsul.jpeg",
+        "imageAlt": "Syamsul Maarip",
+        "contactLabel": "Contact Me"
+      },
+      "biography": {
+        "eyebrow": "About me",
+        "title": "Syamsul Maarip",
+        "image": "assets/PAS PHOTO 3x4.png",
+        "imageAlt": "Syamsul Maarip",
+        "description": "Saya adalah lulusan S1 Informatika yang memiliki pengalaman sebagai Asisten Penelitian dan Asisten Praktikum dalam pengembangan proyek teknologi dan analisis data. Fokus utama saya meliputi Data Analytics, Data Science, Digital Transformation, dan Information Technology. Saya terbiasa menggunakan Python, SQL, Microsoft Excel, Tableau, Power BI, serta berbagai tools pendukung untuk mengolah data, mengembangkan solusi, dan mendukung pengambilan keputusan. Saya senang mempelajari teknologi baru dan terus meningkatkan kemampuan untuk memberikan solusi yang efektif dan bernilai.",
+        "publicationLabel": "Publikasi",
+        "publicationUrl": "https://scholar.google.com/citations?user=Di6G2JEAAAAJ&hl=en"
+      }
+    },
+    "education": {
+      "folderLabel": "Education",
+      "eyebrow": "Education",
+      "title": "Riwayat Pendidikan",
+      "items": [
+        {
+          "period": "2022 — 2026",
+          "title": "S1 Informatika",
+          "place": "Universitas Siliwangi, Tasikmalaya, IPK: 3.89",
+          "details": [
+            "- Lulusan IPK Tertinggi Jurusan Informatika pada Wisuda Periode 1 2026/2027",
+            "- Ketua Organisasi Mahasiswa KIP-K Universitas Siliwangi 2024",
+            "- Asisten Penelitian 2024 dan 2025",
+            "- Asisten Praktikum 2024 dan 2025"
+          ]
+        },
+        {
+          "period": "2019 — 2022",
+          "title": "SMA Negeri 17 Garut",
+          "place": "Matematika Ilmu Pengetahuan Alam (MIPA), Garut, Nilai: 90.03",
+          "details": [
+            "- Ketua Organisasi Siswa Intra Sekolah (OSIS) 2021",
+            "- Anggota Ekstrakurikuler Pendidikan Lingkungan Hidup 2020"
+          ]
+        }
+      ]
+    },
+    "skills": {
+      "folderLabel": "My skills",
+      "eyebrow": "Skills",
+      "title": "Technical Skills",
+      "items": [
+        {
+          "label": "Python",
+          "icon": "fa-brands fa-python"
+        },
+        {
+          "label": "SQL",
+          "icon": "fa-solid fa-database"
+        },
+        {
+          "label": "C++",
+          "icon": "fa-solid fa-code"
+        },
+        {
+          "label": "Data Analysis",
+          "icon": "fa-solid fa-chart-line"
+        },
+        {
+          "label": "Machine Learning",
+          "icon": "fa-solid fa-brain"
+        },
+        {
+          "label": "Deep Learning",
+          "icon": "fa-solid fa-microchip"
+        },
+        {
+          "label": "Computer Vision",
+          "icon": "fa-solid fa-camera"
+        },
+        {
+          "label": "HTML",
+          "icon": "fa-brands fa-html5"
+        },
+        {
+          "label": "CSS",
+          "icon": "fa-brands fa-css3-alt"
+        },
+        {
+          "label": "Microsoft Excel",
+          "icon": "fa-solid fa-file-excel"
+        },
+        {
+          "label": "Microsoft Word",
+          "icon": "fa-solid fa-file-word"
+        },
+        {
+          "label": "Microsoft PowerPoint",
+          "icon": "fa-solid fa-file-powerpoint"
+        },
+        {
+          "label": "PowerPoint",
+          "icon": "fa-solid fa-file-powerpoint"
+        },
+        {
+          "label": "Google Sheets",
+          "icon": "fa-solid fa-table"
+        },
+        {
+          "label": "Google Colab",
+          "icon": "fa-solid fa-laptop-code"
+        },
+        {
+          "label": "Kaggle Notebook",
+          "icon": "fa-solid fa-cloud"
+        },
+        {
+          "label": "Git & GitHub",
+          "icon": "fa-brands fa-git-alt"
+        },
+        {
+          "label": "Notion",
+          "icon": "fa-solid fa-book"
+        },
+        {
+          "label": "Power BI",
+          "icon": "fa-solid fa-chart-column"
+        },
+        {
+          "label": "Tableau",
+          "icon": "fa-solid fa-chart-simple"
+        },
+        {
+          "label": "Canva",
+          "icon": "fa-solid fa-palette"
+        }
+      ]
+    },
+    "projects": {
+      "folderLabel": "Projects",
+      "eyebrow": "Portfolio",
+      "title": "Proyek",
+      "items": [
+        {
+          "title": "Autolabeling Polygon",
+          "description": "Algoritma otomatisasi pembuatan anotasi polygon untuk area segmentasi biji kopi",
+          "image": "assets/screenshot-1785464991554.png",
+          "imageAlt": "Anotasi",
+          "tags": [
+            "Python",
+            "Computer Vision",
+            "Pandas"
+          ],
+          "links": [
+            {
+              "label": "Live Demo",
+              "url": "https://visualisasi-anotasi-sam-syamsulmaarip.streamlit.app/",
+              "icon": "fa-solid fa-arrow-up-right",
+              "external": true
+            },
+            {
+              "label": "Code",
+              "url": "https://github.com/syamsulmaarip05/anotasi-polygon.git",
+              "icon": "fa-brands fa-github",
+              "external": true
+            }
+          ]
+        },
+        {
+          "title": "Modeling Deteksi Objek",
+          "description": "Pelatihan model deteksi objek biji kopi menggunakan YOLOv11-Seg",
+          "image": "assets/screenshot-1785467563172.png",
+          "imageAlt": "PELATIHAN",
+          "tags": [
+            "PyTorch",
+            "Yolov11-Seg"
+          ],
+          "links": [
+            {
+              "label": "Code",
+              "url": "https://github.com/syamsulmaarip05/deteksi-biji-kopi-cacat.git",
+              "icon": "fa-brands fa-github",
+              "external": true
+            }
+          ]
+        },
+        {
+          "title": "Penilaian Esai Otomatis",
+          "description": "Sistem otomatis untuk menilai jawaban esai menggunakan teknik pemrosesan bahasa alami (NLP).",
+          "image": "assets/screenshot-1785468572212.png",
+          "imageAlt": "Web Aplikasi Penilaian Esai Otomatis",
+          "tags": [
+            "python",
+            "Flask",
+            "Excel",
+            "HTML",
+            "CSS"
+          ],
+          "links": [
+            {
+              "label": "Publikasi",
+              "url": "https://ieeexplore.ieee.org/abstract/document/11605827/",
+              "icon": "fa-solid fa-arrow-up-right",
+              "external": true
+            },
+            {
+              "label": "Code",
+              "url": "https://github.com/syamsulmaarip05/NLPRENDER.git",
+              "icon": "fa-brands fa-github",
+              "external": true
+            }
+          ]
+        },
+        {
+          "title": "Deteksi Warna Kopi",
+          "description": "Sistem deteksi warna kematangan biji kopi menggunakan teknik Deep Learning",
+          "image": "assets/1759823508763 (1).jpg",
+          "imageAlt": "App Deteksi Warna Kematangan Kopi",
+          "tags": [
+            "Deep Learning",
+            "Flutter",
+            "Python"
+          ],
+          "links": [
+            {
+              "label": "Publikasi",
+              "url": "https://jutif.if.unsoed.ac.id/index.php/jurnal/article/view/5400",
+              "icon": "fa-solid fa-arrow-up-right",
+              "external": true
+            },
+            {
+              "label": "Code",
+              "url": "https://github.com/syamsulmaarip05/NLPRENDER",
+              "icon": "fa-brands fa-github",
+              "external": true
+            }
+          ]
+        },
+        {
+          "title": "Prediksi Harapan Hidup Indonesia",
+          "description": "Sistem prediksi harapan hidup Indonesia menggunakan teknik Interpolasi Polinom Lagrange",
+          "image": "assets/1719123587008.jpg",
+          "imageAlt": "Prediksi Harapan Hidup Indonesia",
+          "tags": [
+            "Excel",
+            "Python",
+            "Statistics"
+          ],
+          "links": [
+            {
+              "label": "Publikasi",
+              "url": "https://e-journal.usd.ac.id/index.php/IJASST/article/view/9167",
+              "icon": "fa-solid fa-arrow-up-right",
+              "external": true
+            }
+          ]
+        },
+        {
+          "title": "Analisis Program IUP",
+          "description": "Sistem Prediksi Analisis Program International Undergraduate Porgam (IUP) di indonesia berbasis streamlit",
+          "image": "assets/screenshot-1785494098067.png",
+          "imageAlt": "Analisis Program IUP",
+          "tags": [
+            "Excel",
+            "Python",
+            "Streamlit"
+          ],
+          "links": [
+            {
+              "label": "Live Demo",
+              "url": "https://kelompok6b.streamlit.app/",
+              "icon": "fa-solid fa-arrow-up-right",
+              "external": true
+            },
+            {
+              "label": "Code",
+              "url": "https://github.com/syamsulmaarip05/PROJEKVINIX",
+              "icon": "fa-brands fa-github",
+              "external": true
+            }
+          ]
+        },
+        {
+          "title": "Email Otomatis",
+          "description": "Sistem Otomatis untuk Mengirim Email Berbasis Python",
+          "image": "assets/Screenshot_2-8-2026_11439_github.com.jpeg",
+          "imageAlt": "Email Otomatis",
+          "tags": [
+            "Excel",
+            "Python"
+          ],
+          "links": [
+            {
+              "label": "Code",
+              "url": "https://github.com/syamsulmaarip05/email_otomatis",
+              "icon": "fa-brands fa-github",
+              "external": true
+            }
+          ]
+        }
+      ]
+    },
+    "experience": {
+      "folderLabel": "Experience",
+      "eyebrow": "Experience",
+      "title": "Pengalaman",
+      "items": [
+        {
+          "period": "Juni – Oktober 2025",
+          "title": "Asisten Penelitian",
+          "place": "Program Studi Informatika UNSIL | Freelance",
+          "description": "Mengembangkan model deep learning untuk deteksi objek warna biji kopi berbasis aplikasi mobile."
+        },
+        {
+          "period": "September – November 2025",
+          "title": "Asisten Praktikum Algoritma dan Pemrograman",
+          "place": "Program Studi Informatika UNSIL | Freelance",
+          "description": "Membantu mahasiswa memahami konsep algoritma dan pemrograman, memberikan bimbingan praktikum, serta menilai tugas mahasiswa."
+        },
+        {
+          "period": "Februari – Juni 2025",
+          "title": "Junior Data Scientist",
+          "place": "VINIX 7 | Magang Projek",
+          "description": "Belajar dan mengimplementasikan teknik data science untuk analisis data, pengembangan model prediksi, dan visualisasi data guna mendukung pengambilan keputusan bisnis."
+        },
+        {
+          "period": "Juni – November 2024",
+          "title": "Asisten Penelitian",
+          "place": "Program Studi Informatika UNSIL | Freelance",
+          "description": "Mengembangkan model machine learning untuk prediksi bencana banjir."
+        },
+        {
+          "period": "September – November 2024",
+          "title": "Asisten Praktikum Pemrograman Dasar",
+          "place": "Program Studi Informatika UNSIL | Freelance",
+          "description": "Membantu mahasiswa memahami konsep algoritma dan pemrograman, memberikan bimbingan praktikum, serta menilai tugas mahasiswa."
+        },
+        {
+          "period": "Desember 2023 – Desember 2024",
+          "title": "Ketua Forum Mahasiswa KIP-K Univeristas Siliwangi",
+          "place": "Universitas Siliwangi | Organisasi",
+          "description": "Memimpin dan mengelola kegiatan organisasi mahasiswa KIP-K, termasuk perencanaan program, koordinasi anggota, dan pelaksanaan kegiatan sosial."
+        },
+        {
+          "period": "Februari 2023 – November 2022",
+          "title": "Anggota Kominfo RUMAH KIP-K",
+          "place": "Universitas Siliwangi | Organisasi",
+          "description": "Mengelola komunikasi dan informasi organisasi, termasuk media sosial, publikasi, dan dokumentasi kegiatan."
+        }
+      ]
+    },
+    "certifications": {
+      "folderLabel": "Certificates & documentation",
+      "eyebrow": "Certifications",
+      "title": "Sertifikasi",
+      "items": [
+        {
+          "title": "Sertifikasi Kompetensi Data Analyst",
+          "description": "Sertifikasi Kompetensi Data Analyst dari BNSP sebagai pengakuan atas kemampuan dalam mengelola siklus analisis data, mulai dari identifikasi kebutuhan bisnis, pengumpulan dan validasi data, analisis data, pengembangan Business Intelligence, hingga penyusunan laporan analisis untuk mendukung pengambilan keputusan.",
+          "image": "assets/Syamsul Maarip.pdf.png",
+          "imageAlt": "BNSP",
+          "issuer": "Badan Nasional Sertifikasi Profesi (BNSP) | 2025"
+        },
+        {
+          "title": "MikroTik Certified Network Associate (MTCNA)",
+          "description": "Menyelesaikan pelatihan MikroTik Certified Network Associate (MTCNA) yang membahas dasar-dasar jaringan komputer, konfigurasi perangkat MikroTik, pengelolaan jaringan, serta penerapan keamanan dan konektivitas jaringan.",
+          "image": "assets/1717137476723.jpg",
+          "imageAlt": "MikroTik Certified Network Associate (MTCNA)",
+          "issuer": "MikroTik | 2024"
+        },
+        {
+          "title": "Certified International Specialist in Data Engineering",
+          "description": "Memperoleh sertifikasi internasional yang membuktikan pemahaman mengenai pengelolaan data, seperti mengumpulkan, mengolah, menyimpan, dan menyiapkan data agar siap digunakan dalam proses analisis dan pengambilan keputusan.",
+          "image": "assets/1771382603312.jpg",
+          "imageAlt": "Certified International Specialist in Data Engineering",
+          "issuer": "PASAS INSTITUTE | 2026"
+        },
+        {
+          "title": "Certificate in Agile Scrum Fundamentals",
+          "description": "Memperoleh sertifikat Agile Scrum Fundamentals yang menunjukkan pemahaman tentang cara bekerja dalam tim secara terstruktur, membagi pekerjaan menjadi beberapa tahap, beradaptasi dengan perubahan, dan menyelesaikan proyek secara lebih efektif.",
+          "image": "assets/1746414628141.jpg",
+          "imageAlt": "Certificate in Agile Scrum Fundamentals",
+          "issuer": "MindMagine | 2025"
+        },
+        {
+          "title": "Belajar Dasar Visualisasi Data",
+          "description": "Menyelesaikan pelatihan dasar visualisasi data yang membahas pengolahan data menggunakan Google Sheets, pembuatan grafik yang informatif, serta teknik menyampaikan hasil analisis agar lebih mudah dipahami oleh berbagai pihak.",
+          "image": "assets/1739631837805.jpg",
+          "imageAlt": "Belajar Dasar Visualisasi Data",
+          "issuer": "Dicoding | 2025"
+        },
+        {
+          "title": "Database - SQL Track",
+          "description": "Menyelesaikan pelatihan Database - SQL Track yang membahas dasar-dasar SQL, termasuk mengambil, mengelompokkan, dan menggabungkan data dari beberapa tabel untuk mendukung pengolahan dan analisis data.",
+          "image": "assets/download.png",
+          "imageAlt": "Database - SQL Track",
+          "issuer": "DQLab | 2025"
+        }
+      ],
+      "documentation": {
+        "eyebrow": "Documentation",
+        "title": "Dokumentasi Kegiatan",
+        "items": [
+          {
+            "image": "assets/1759850391005.jpg",
+            "alt": "Assiten Praktikum"
+          },
+          {
+            "image": "assets/20251009_105641.jpg",
+            "alt": "Asisten Penelitian"
+          },
+          {
+            "image": "assets/image1.png",
+            "alt": "Ketua Forum"
+          },
+          {
+            "image": "assets/image.png",
+            "alt": "Kegiatan Forum"
+          },
+          {
+            "image": "assets/WhatsApp Image 2026-07-31 at 5.30.53 PM.jpeg",
+            "alt": "Skripsi"
+          },
+          {
+            "image": "assets/Screenshot_31-7-2026_154014_www.instagram.com.jpeg",
+            "alt": "Ketua Forum"
+          },
+          {
+            "image": "assets/WhatsApp Image 2026-08-02 at 12.16.53 PM.jpeg",
+            "alt": "Persiapan Komputer"
+          },
+          {
+            "image": "assets/WhatsApp Image 2026-08-02 at 12.16.53 PM (1).jpeg",
+            "alt": "Kegiatan"
+          }
+        ]
+      }
+    },
+    "contact": {
+      "folderLabel": "Contact",
+      "title": "Let's work together on your next project",
+      "socials": [
+        {
+          "label": "LinkedIn",
+          "url": "https://linkedin.com/in/syamsul-maarip",
+          "icon": "fa-brands fa-linkedin-in",
+          "external": true
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/syamsulmaarip05?tab=repositories",
+          "icon": "fa-brands fa-github",
+          "external": true
+        },
+        {
+          "label": "Email",
+          "url": "mailto:syamsulmaarip05@gmail.com",
+          "icon": "fa-solid fa-envelope",
+          "external": false
+        },
+        {
+          "label": "Instagram",
+          "url": "https://instagram.com/syamsulmaarip05",
+          "icon": "fa-brands fa-instagram",
+          "external": true
+        }
+      ],
+      "emailLabel": "Contact Me",
+      "emailUrl": "https://wa.me/+628985686144",
+      "footer": "2026 Syamsul Maarip. All rights reserved."
+    }
+  }
+}
